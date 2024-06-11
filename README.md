@@ -42,6 +42,13 @@ Crop Predictor and Market Analysis
 
 
 
+Rewards and Redemption
+
+![Screenshot 2024-04-03 235913](https://github.com/ap9068123/Sustainability-Modelling-for-Residential-Communities-and-Crop-Recommendation-System/assets/83332051/8428a70b-fcca-40e8-ba06-c46067679745)
+
+
+
+
 
 
 
