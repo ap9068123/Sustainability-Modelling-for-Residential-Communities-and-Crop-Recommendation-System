@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <title>CarbonCatalyst - Footprint Details</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height:1100px;
+           
+            text-align: center;
+            border: solid darkgreen 2px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .signin
+        {
+            text-align:center;
+        }
+
+
+        .signin input[type="text"],
+        .signin input[type="date"],
+        .signin input[type="number"],
+    .signin input[type="password"],
+    .signin input[type="submit"] {
+      width: 75%;
+    
+      padding: 10px;
+      border: solid darkgreen 2px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    
+    .signin input[type="submit"] {
+      background-color:  darkgreen;
+      width: 50%;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #d
+    {
+        background-color: darkgreen;
+        color: white;
+        padding: 20px 20px 20px 20px;
+        border-radius: 8px;
+    }
+    
+
+        
+    </style>
+</head>
+<body>
+    <div id="signup-section" class="signin">
+    <form method = "POST" action= "cf.php" enctype="multipart/form-data" autocomplete="off">
+<br><br>
+        <h2 id="d"></h2><br><br>
+        <input type="text" id="name" name="name" placeholder="&#128100;  Name" required><br><br>
+      <input type="text" id="email" name= "email" placeholder="&#9993;  Email" required><br><br>
+       <input type="number" id="n" name= "n" placeholder="  No. of family members" required><br><br>
+      <input type="date" name="date" required><br><br>
+      <input type="number" id="dis" name="dis" placeholder="Distance travelled  (in KMs) - Optional"><br><br>
+       <p style="font-size: 12px; color: black;">Odometer Image&nbsp;&nbsp;<input type="file" id="e" name="e" accept="image/x-png,image/gif,image/jpeg,image/jpg" placeholder="Choose Photo" ><br><br>
+        </p>
+        <input type="number" id="ebill" name="ebill" placeholder="Electricity Units  (in kWh)" required>
+        <p style="font-size: 12px; color: black;">Electricity  bill&nbsp;&nbsp;<input type="file" id ="a" name="a" accept="image/x-png,image/gif,image/jpeg,image/jpg" placeholder="Choose Photo" required><br><br>
+        </p>
+        <input type="number" id="gbill" name="gbill" placeholder="Gas Units (in Kgs) " required>
+        <p style="font-size: 12px; color: black;">Gas bill&nbsp;&nbsp;<input type="file" id="b" name="b" accept="image/x-png,image/gif,image/jpeg,image/jpg" placeholder="Choose Photo" required><br><br>
+        </p>
+
+        <input type="number" id="wbill" name="wbill" placeholder="Water Quantity (in cubic metres) " required>
+        <p style="font-size: 12px; color: black;">Water bill&nbsp;&nbsp;<input type="file" id="c" name="c" accept="image/x-png,image/gif,image/jpeg,image/jpg" placeholder="Choose Photo" required><br><br>
+        </p>
+        
+        <input type="number" id="pbill" name="pbill" placeholder="Petrol/Diesel Quantity  (in litres) -  Optional">
+        <p style="font-size: 12px; color: black;">Oil bill&nbsp;&nbsp;<input type="file" id="d2" name="d" accept="image/x-png,image/gif,image/jpeg,image/jpg" placeholder="Choose Photo"><br><br>
+        </p>
+          <input type="submit" value="&#10004;  Uplaod Info">   <br><br><br><br> <br><br><br><br>
+        
+      </form>
+      </div>
+<script>
+    var da=new Date();
+    const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    
+    document.getElementById("d").innerHTML="Upload Carbon Footprint Info for <br>" +month[da.getMonth()] + " "+da.getFullYear();
+    
+    
+    
+    document.getElementById('a').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const fileSize = file.size; // Size in bytes
+    const maxSize = 200 * 1024; // 100KB in bytes
+
+    if (fileSize > maxSize) {
+       /* document.getElementById('errorMessage').style.display = 'block';
+        // Clear the file input to prevent submission*/
+        
+        alert("Image size exceeds 200KB");
+        event.target.value = null;
+    } else {
+       // document.getElementById('errorMessage').style.display = 'none';
+    }
+});
+
+
+ document.getElementById('a').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const fileSize = file.size; // Size in bytes
+    const maxSize = 200 * 1024; // 100KB in bytes
+
+    if (fileSize > maxSize) {
+       /* document.getElementById('errorMessage').style.display = 'block';
+        // Clear the file input to prevent submission*/
+        
+        alert("Image size exceeds 200KB");
+        event.target.value = null;
+    } else {
+       // document.getElementById('errorMessage').style.display = 'none';
+    }
+});
+
+
+ document.getElementById('b').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const fileSize = file.size; // Size in bytes
+    const maxSize = 200 * 1024; // 100KB in bytes
+
+    if (fileSize > maxSize) {
+       /* document.getElementById('errorMessage').style.display = 'block';
+        // Clear the file input to prevent submission*/
+        
+        alert("Image size exceeds 200KB");
+        event.target.value = null;
+    } else {
+       // document.getElementById('errorMessage').style.display = 'none';
+    }
+});
+
+
+ document.getElementById('c').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const fileSize = file.size; // Size in bytes
+    const maxSize = 200 * 1024; // 100KB in bytes
+
+    if (fileSize > maxSize) {
+       /* document.getElementById('errorMessage').style.display = 'block';
+        // Clear the file input to prevent submission*/
+        
+        alert("Image size exceeds 200KB");
+        event.target.value = null;
+    } else {
+       // document.getElementById('errorMessage').style.display = 'none';
+    }
+});
+
+
+ document.getElementById('d2').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const fileSize = file.size; // Size in bytes
+    const maxSize = 200 * 1024; // 100KB in bytes
+
+    if (fileSize > maxSize) {
+       /* document.getElementById('errorMessage').style.display = 'block';
+        // Clear the file input to prevent submission*/
+        
+        alert("Image size exceeds 200KB");
+        event.target.value = null;
+    } else {
+       // document.getElementById('errorMessage').style.display = 'none';
+    }
+});
+
+
+ document.getElementById('e').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const fileSize = file.size; // Size in bytes
+    const maxSize = 200 * 1024; // 100KB in bytes
+
+    if (fileSize > maxSize) {
+       /* document.getElementById('errorMessage').style.display = 'block';
+        // Clear the file input to prevent submission*/
+        
+        alert("Image size exceeds 200KB");
+        event.target.value = null;
+    } else {
+       // document.getElementById('errorMessage').style.display = 'none';
+    }
+});
+
+</script>
+</body>
+</html>

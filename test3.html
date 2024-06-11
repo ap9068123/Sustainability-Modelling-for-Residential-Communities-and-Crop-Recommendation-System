@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Example</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's above other content */
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* Apply rotation animation */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+  </style>
+</head>
+<body>
+  <div class="loading-overlay">
+    <div class="loader"></div>
+  </div>
+  <!-- Your page content goes here -->
+  <h1>Welcome to My Website</h1>
+  <p>This is some content on my page.</p>
+  <script >
+   document.addEventListener("DOMContentLoaded", function() {
+  // Show loading overlay initially
+  var loadingOverlay = document.querySelector(".loading-overlay");
+  loadingOverlay.style.display = "flex"; // Make sure it's visible initially
+
+  // Hide loading overlay after a delay
+  setTimeout(function() {
+    loadingOverlay.style.opacity = "0"; // Fade out the overlay
+    setTimeout(function() {
+      loadingOverlay.style.display = "none"; // Hide the overlay completely
+    }, 500); // Adjust the delay to match the duration of the CSS fade-out transition
+  }, 2000); // Adjust the delay before hiding the overlay (in milliseconds)
+});
+
+
+
+  </script>
+</body>
+</html>

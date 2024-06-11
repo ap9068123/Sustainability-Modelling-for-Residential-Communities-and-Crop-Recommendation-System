@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.center
+    {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 95%;
+      padding: 40px 40px 40px 40px;
+    }
+    
+    .left
+    {
+      display: block;
+      margin-left: auto;
+      width: 200px;
+      padding: 40px 40px 40px 40px;
+    }
+
+    .right
+    {
+      display: block;
+      margin-right: auto;
+      height: 300px;
+      width: 500px;
+      padding: 40px 40px 40px 40px;
+      
+    }
+    .container.jumbotron {
+    border-radius: 10px ;
+}
+
+.popup
+{
+  background-color: darkgreen;
+  color:white;
+  display: block;
+      margin-left: auto;
+      margin-right: auto;
+  width:60%;
+  height: auto;
+  border-radius: 30px;
+}
+
+
+.jumbotron {
+    background-color:rgb(192, 39, 47); 
+}
+

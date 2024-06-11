@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbon Footprint Reduction</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+<style>
+
+#p
+{
+        width: 50%; 
+    margin: 0 auto; 
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+}
+    
+    
+    .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.jumbotron {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.jumbotron h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.jumbotron p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.jumbotron ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.jumbotron ul li {
+    margin-bottom: 5px;
+}
+
+</style>
+</head>
+<body>
+
+<br><br>
+
+<div class="container">
+<h2 align='center'>Graphical Analysis</h2>
+<div style="max-width: 600px;" id="p">
+    <canvas id="carbonChart"></canvas>
+</div>
+
+
+<div class="jumbotron">
+    <h1>Suggestions for Reducing Carbon Footprint</h1>
+    <h3>If the distance is more than 300 Kms, consider:</h3>
+    <ul>
+        <li>Using public transportation or carpooling</li>
+        <li>Combining errands to reduce the number of trips</li>
+    </ul>
+    <h3>If the electricity bill is more than 200 kWh, consider:</h3>
+    <ul>
+        <li>Using energy-efficient appliances and lighting</li>
+        <li>Unplugging devices when not in use</li>
+    </ul>
+    <h3>If water consumption is more than 2000 litres, consider:</h3>
+    <ul>
+        <li>Fixing leaks and using water-saving fixtures</li>
+        <li>Reducing shower time and using a water-efficient showerhead</li>
+    </ul>
+    
+      <h3>If gas consumption is more than 10 kgs, consider:</h3>
+    <ul>
+        <li>Ensuring that your LPG appliances are well-maintained. Regular servicing can improve efficiency and reduce consumption.</li>
+    </ul>
+   
+</div>
+
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    calculateCarbonFootprint();
+   
+    
+});
+
+function calculateCarbonFootprint() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "calculate_carbon_footprint.php", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+ 
+            generateChart(data);
+        }
+    };
+    xhr.send();
+}
+
+/*
+function generateChart(data) {
+    const ctx = document.getElementById("carbonChart").getContext("2d");
+    const colors = [];
+    
+    var s="";
+    
+    // Assigning colors and labels based on values for each attribute
+    data.forEach((value, index) => {
+        if (index === 0 && value <= 300) { // Distance
+            colors.push("green");
+        } else if (index === 1 && value <= 10) { // Gas
+            colors.push("green");
+        } else if (index === 2 && value <= 200) { // Electricity
+            colors.push("green");
+        } else if (index === 3 && value <= 2000) { // Water
+            colors.push("green");
+        } else {
+            colors.push("red");
+        }
+    });
+
+    const labels = [];
+    data.forEach((value, index) => {
+        if (colors[index] === "green") {
+            labels.push("Good");
+        } else {
+            labels.push("Improvement");
+        }
+    });
+    
+    const chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["Distance", "Gas", "Electricity", "Water"],
+            datasets: [{
+                label: "Carbon Footprint",
+                data: data,
+                backgroundColor: colors,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // Adding legend
+    const legend = document.createElement("div");
+    legend.innerHTML = `
+        <div>
+            <span style="color: green; margin-right: 10px;">Good</span>
+            <span style="color: red;">Improvement</span>
+        </div>
+    `;
+    document.getElementById("carbonChart").after(legend);
+}
+
+
+function getSuggestions(attributeValues) {
+    const suggestions = [];
+    
+    attributeValues.forEach((value, index) => 
+    if (value > 300  && index === 0) { // Distance
+        suggestions.push("Using public transportation or carpooling");
+        suggestions.push("Combining errands to reduce the number of trips");
+    }
+    if (value > 200  && index === 2) { // Electricity
+        suggestions.push("Using energy-efficient appliances and lighting");
+        suggestions.push("Unplugging devices when not in use");
+    }
+    if (value > 2000  && index === 3) { // Water
+        suggestions.push("Fixing leaks and using water-saving fixtures");
+        suggestions.push("Reducing shower time and using a water-efficient showerhead");
+    }
+    if (value > 10 && index === 1) { // Gas
+        suggestions.push("Driving less aggressively to improve fuel efficiency");
+        suggestions.push("Using a more fuel-efficient vehicle or alternative transportation methods");
+    }
+    return suggestions;
+}
+
+function displaySuggestions(suggestions) {
+    const suggestionsList = document.getElementById("suggestionsList");
+    suggestionsList.innerHTML = ""; // Clear previous suggestions
+    suggestions.forEach(suggestion => {
+        const listItem = document.createElement("li");
+        listItem.textContent = suggestion;
+        suggestionsList.appendChild(listItem);
+    });
+}
+*/
+
+function generateChart(data) {
+    const ctx = document.getElementById("carbonChart").getContext("2d");
+    const colors = [];
+    
+    // Assigning colors and labels based on values for each attribute
+    data.forEach((value, index) => {
+        if (index === 0 && value <= 300*0.18) { // Distance
+            colors.push("green");
+        } else if (index === 1 && value <= 10*3.2) { // Gas
+            colors.push("green");
+        } else if (index === 2 && value <= 200*0.82) { // Electricity
+            colors.push("green");
+        } else if (index === 3 && value <= 2000*0.344) { // Water
+            colors.push("green");
+        } else {
+            colors.push("red");
+        }
+    });
+
+    const labels = [];
+    data.forEach((value, index) => {
+        if (colors[index] === "green") {
+            labels.push("Good");
+        } else {
+            labels.push("Improvement");
+        }
+    });
+    
+    const chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["Distance", "Gas", "Electricity", "Water"],
+            datasets: [{
+                label: "Carbon Footprint",
+                data: data,
+                backgroundColor: colors,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // Adding legend
+    const legend = document.createElement("div");
+    legend.innerHTML = `
+        <div>
+            <span style="color: green; margin-right: 10px;">Good</span>
+            <span style="color: red;">Improvement</span>
+        </div>
+    `;
+    document.getElementById("carbonChart").after(legend);
+}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarbonCatalyst - Personalised Action Planer</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: Arial, sans-serif;
+           
+        }
+        
+
+
+        #header {
+            background-color: #005400;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            width:100%;
+        }
+
+       #content {
+           
+           text-align:center;
+           
+        }
+        
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #suggestions {
+            margin-bottom: 20px;
+        }
+
+        #footer {
+            background-color: #005400;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        input {
+            width: 40%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #005400;
+            color: #ffffff;
+            padding: 10px;
+            cursor: pointer;
+            justify-content: center;
+            width: 20%;
+            text-align:center;
+        }
+        
+        h2 {
+            color: #008000;
+            text-align: center;
+        }
+
+        ol {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            padding: 10px;
+            text-align:center;
+            width:100%;
+            
+            border-radius: 8px;
+        }
+
+        strong {
+            color: #008000;
+            font-size: 1.2em;
+        }
+
+        ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header">
+        <h1>Carbon Footprint Calculator</h1>
+    </div>
+   <br><br><br>
+    <div id="content">
+        <label for="carbonInput">Enter Your Carbon Footprint Value:</label><br><br>
+        <input type="number" id="carbonInput" placeholder="Enter value in terms of CO2e">
+
+        <button onclick="calculateFootprint()">Calculate</button>
+
+        <div id="result"></div>
+
+        <div id="suggestion"></div>
+
+        <div id="suggestions">
+            
+            <h2>Suggestions for Reducing Carbon Footprint in Households</h2>
+
+            <ol>
+                <li>
+                    <strong>Energy Efficiency:</strong>
+                    <ul>
+                        <li>Install energy-efficient appliances, such as Energy Star-rated devices.</li>
+                        <li>Use LED or CFL light bulbs, as they are more energy-efficient and have a longer lifespan.</li>
+                        <li>Seal drafts in windows and doors to minimize heat loss or gain.</li>
+                    </ul>
+                </li>
+        
+                <li>
+                    <strong>Renewable Energy:</strong>
+                    <ul>
+                        <li>Consider installing solar panels or using renewable energy sources if possible.</li>
+                        <li>Choose a green energy plan from your utility provider, if available.</li>
+                    </ul>
+                </li>
+        
+                <li>
+                    <strong>Water Conservation:</strong>
+                    <ul>
+                        <li>Fix leaks promptly to conserve water and energy.</li>
+                        <li>Install water-efficient appliances, such as low-flow toilets and showerheads.</li>
+                    </ul>
+                </li>
+        
+                <li>
+                    <strong>Waste Reduction:</strong>
+                    <ul>
+                        <li>Recycle paper, plastic, glass, and other materials. Compost organic waste.</li>
+                        <li>Use reusable bags, containers, and water bottles to reduce single-use plastics.</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Transportation:</strong>
+                    <ul>
+                        <li>Use public transportation, carpool, cycle, or walk whenever possible.</li>
+                        <li>Consider owning a fuel-efficient or electric vehicle.</li>
+                    </ul>
+                </li>
+        
+                <li>
+                    <strong>Sustainable Purchasing:</strong>
+                    <ul>
+                        <li>Choose products with minimal packaging.</li>
+                        <li>Buy locally produced goods to reduce transportation emissions.</li>
+                    </ul>
+                </li>
+        
+                <li>
+                    <strong>Reduce Meat Consumption:</strong>
+                    <ul>
+                        <li>Incorporate more plant-based meals into your diet.</li>
+                        <li>Choose sustainably sourced and locally produced food products.</li>
+                    </ul>
+                </li>
+        
+                <li>
+                    <strong>Switch to Green Cleaning Products:</strong>
+                    <ul>
+                        <li>Use environmentally friendly and non-toxic cleaning products.</li>
+                        <li>Consider making your own cleaning solutions using natural ingredients.</li>
+                    </ul>
+                </li>
+        
+                <li>
+                    <strong>Unplug Devices:</strong>
+                    <ul>
+                        <li>Turn off and unplug electronic devices when not in use.</li>
+                        <li>Use power strips to easily disconnect multiple devices at once.</li>
+                    </ul>
+                </li>
+        
+                <li>
+                    <strong>Home Gardening:</strong>
+                    <ul>
+                        <li>Plant trees and shrubs around your home to provide natural shade.</li>
+                        <li>Cultivate a small garden to grow your own fruits and vegetables.</li>
+                    </ul>
+                </li>
+        
+                <li>
+                    <strong>Education and Advocacy:</strong>
+                    <ul>
+                        <li>Stay informed about environmental issues.</li>
+                        <li>Advocate for sustainable practices and policies in your community.</li>
+                    </ul>
+                </li>
+        
+                <li>
+                    <strong>Carbon Offsetting:</strong>
+                    <ul>
+                        <li>Consider supporting carbon offset programs or projects to balance out your unavoidable emissions.</li>
+                    </ul>
+                </li>
+        
+                <li>
+                    <strong>Educate Others:</strong>
+                    <ul>
+                        <li>Share your knowledge and experiences with friends and family to encourage a wider adoption of sustainable practices.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="footer">
+        &copy; 2024 Carbon Footprint Calculator
+    </div>
+
+    <script>
+        function calculateFootprint() {
+            var userInput = parseFloat(document.getElementById('carbonInput').value);
+
+            var expectedFootprint =250;
+            var difference = userInput - expectedFootprint;
+
+            document.getElementById('result').innerHTML = 'Your Carbon Footprint: ' + userInput.toFixed(2) + ' metric tons CO2e';
+
+            var suggestionsElement = document.getElementById('suggestion');
+            
+            if (difference > 0) {
+                suggestionsElement.innerHTML = '<br>Your footprint is ' + difference.toFixed(2) + ' CO2e higher than expected. Consider reducing energy consumption.';
+                suggestionsElement.innerHTML += '<br><br>Based on your carbon footprint, here are some suggestions:';
+            } else {
+                suggestionsElement.innerHTML += 'Great job! Your carbon footprint is below the expected value.';
+            }
+        }
+    </script>
+
+</body>
+</html>

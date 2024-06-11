@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarbonCatalyst - Bus Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 700px;
+            width:90%;
+            margin: 20px auto;
+            background-color: darkgreen;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: white;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="date"] {
+            padding: 10px;
+            width: 200px;
+            margin-right: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            color: black;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <br><br><br>
+    <div class="container">
+        <h1>Check Bus Service Availability</h1>
+        <form action="bus.php" method="post">
+            <input type="text" name="source" placeholder="Enter Source"><br><br>
+            <input type="text" name="destination" placeholder="Enter Destination"><br><br>
+            <input type="date" name="date">
+            <br><br>
+            <input type="submit" value="Check Availability">
+        </form>
+        <div id="result" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+       /* document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var source = document.querySelector('input[name="source"]').value;
+            var destination = document.querySelector('input[name="destination"]').value;
+            var date = document.querySelector('input[name="date"]').value;
+
+            
+
+            var resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>Bus service from ' + source + ' to ' + destination + ' on ' + date + ' is available.</p>';
+        });*/
+    </script>
+</body>
+</html>

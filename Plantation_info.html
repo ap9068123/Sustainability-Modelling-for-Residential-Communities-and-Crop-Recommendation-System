@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>CarbonCatalyst - Plantation Info</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+           height: 600px;
+            text-align: center;
+            border: solid darkgreen 2px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+
+        .signin input[type="text"],
+        .signin input[type="date"],
+        .signin input[type="number"],
+    .signin input[type="password"],
+    .signin input[type="submit"] {
+      width: 60%;
+      padding: 10px;
+      border: solid darkgreen 2px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    
+    .signin input[type="submit"] {
+      background-color:  darkgreen;
+      width: 65%;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    
+    #d
+    {
+        background-color: darkgreen;
+        color: white;
+        padding: 20px 20px 20px 20px;
+        border-radius: 8px;
+    }
+    
+
+        
+    </style>
+</head>
+<body>
+    <div id="signup-section" class="signin">
+    <form method = "POST" action= "plant.php" enctype="multipart/form-data" autocomplete="off">
+
+        <h2 id="d">Upload Plantation Info</h2><br><br>
+        <input type="text" id="name" name="name" placeholder="&#128100;  Name" required>
+      <input type="text" id="email" name= "email" placeholder="&#9993;  Email" required>
+        <input type="text" id="ptype" name="ptype" placeholder="&#127794; Plant Type" required>
+        <input type="text" id="location" name= "location"  placeholder="&#128205;Location" required>
+        <input type="number" id="num" name="num" placeholder="# Number of plants planted" required>
+        <input type="hidden" name="latitude" id="latitude">
+    <input type="hidden" name="longitude" id="longitude">
+       <input type="date" name="date" required><br><br>
+        
+       
+        
+        <p style="font-size: 12px; color: black;">Plant Picture &nbsp;&nbsp;<input type="file" id ="image" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" placeholder="Choose Photo" required><br><br>
+        </p>
+          <input type="submit" value="&#10004;  Uplaod Info">   <br><br><br><br> <br><br><br><br>
+         
+      </form>
+      </div>
+
+
+<script>
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    document.getElementById('latitude').value = position.coords.latitude;
+    document.getElementById('longitude').value = position.coords.longitude;
+}
+
+document.getElementById('image').onchange = getLocation;
+
+</script>
+
+</body>
+</html>

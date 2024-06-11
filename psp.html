@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Carbon Footprint Reduction - Action Plans</title>
+    <style>
+        /* Your existing styles remain unchanged */
+
+/* New styles for result details */
+.result-details {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.result-details h3 {
+    margin-bottom: 10px;
+}
+
+.result-details p {
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Personalized Action Plans</h1>
+        <form id="carbonForm">
+            <label for="footprint">Enter Your Annual Carbon Footprint (in metric tons):</label>
+            <input type="number" id="footprint" step="0.01" required>
+            <button type="button" onclick="generateActionPlan()">Generate Action Plan</button>
+        </form>
+        <div id="actionPlan" class="hidden">
+            <h2>Your Personalized Action Plan:</h2>
+            <ul id="actionList"></ul>
+        </div>
+    </div>
+    <script>
+     
+     function generateActionPlan() {
+    const carbonFootprint = parseFloat(document.getElementById('footprint').value);
+    const actionList = document.getElementById('actionList');
+    const actionPlan = document.getElementById('actionPlan');
+    const resultDetails = document.getElementById('resultDetails');
+
+    // Clear previous action plan and details
+    actionList.innerHTML = '';
+    resultDetails.innerHTML = '';
+
+    // Check if the entered value is valid
+    if (isNaN(carbonFootprint) || carbonFootprint <= 0) {
+        alert('Please enter a valid positive number for your annual carbon footprint.');
+        return;
+    }
+
+    // Provide context based on the user's carbon footprint
+    if (carbonFootprint < 5) {
+        resultDetails.innerHTML += '<p>Your carbon footprint is relatively low. Great job!</p>';
+    } else if (carbonFootprint < 10) {
+        resultDetails.innerHTML += '<p>Your carbon footprint is moderate. There are opportunities to reduce it further.</p>';
+    } else {
+        resultDetails.innerHTML += '<p>Your carbon footprint is relatively high. Consider implementing significant changes to reduce it.</p>';
+    }
+
+    // Generate action items based on the user's carbon footprint
+    if (carbonFootprint < 5) {
+        actionList.innerHTML += '<li>Continue using energy-efficient appliances and lighting.</li>';
+        actionList.innerHTML += '<li>Consider using public transportation or carpooling for commuting.</li>';
+        actionList.innerHTML += '<li>Support renewable energy initiatives in your community.</li>';
+    } else if (carbonFootprint < 10) {
+        actionList.innerHTML += '<li>Upgrade to energy-efficient appliances and lighting.</li>';
+        actionList.innerHTML += '<li>Reduce meat consumption and incorporate more plant-based foods into your diet.</li>';
+        actionList.innerHTML += '<li>Use public transportation or carpool for commuting.</li>';
+    } else {
+        actionList.innerHTML += '<li>Investigate and consider installing solar panels on your property.</li>';
+        actionList.innerHTML += '<li>Offset your remaining carbon footprint by supporting verified carbon offset projects.</li>';
+        actionList.innerHTML += '<li>Consider using an electric vehicle for transportation.</li>';
+    }
+
+    // Display the action plan and result details
+    actionPlan.classList.remove('hidden');
+    resultDetails.classList.remove('hidden');
+}
+
+
+    </script>
+</body>
+</html>

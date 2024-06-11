@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px; /* Height of the progress container */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  z-index: 9999; /* Ensure it's above other content */
+}
+
+.progress-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 20%; /* Initial width of the progress bar */
+  background-color: #3498db; /* Progress bar color */
+  animation: progress 2s linear infinite; /* Progress animation */
+}
+
+@keyframes progress {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="loading-overlay">
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+      
+      <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  // Hide loading overlay after a delay
+  setTimeout(function() {
+    var loadingOverlay = document.querySelector(".loading-overlay");
+    loadingOverlay.style.opacity = "0"; // Fade out the overlay
+    setTimeout(function() {
+      loadingOverlay.style.display = "none"; // Hide the overlay completely
+    }, 500); // Adjust the delay to match the duration of the CSS fade-out transition
+  }, 2000); // Adjust the delay before hiding the overlay (in milliseconds)
+});
+
+
+      </script>
+</body>
+</html>

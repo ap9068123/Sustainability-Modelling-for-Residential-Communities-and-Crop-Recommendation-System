@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CarbonCatalyst - Login</title>
+  <style>
+ 
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+ 
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f2f2f2;
+      padding: 20px;
+      border: solid  darkgreen 1px;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      padding: auto;
+      color: darkgreen;
+    }
+
+    .j
+    {
+        border: none;
+      border-radius: 12px;
+      align-content: center;
+      color: darkgreen;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li  
+    {
+        margin-right: 10px;
+      padding:  10px 10px 10px 10px ;
+     
+    }
+    nav ul li a
+    {
+        color:darkgreen;
+    }
+
+
+    .section {
+      margin: 50px;
+    }
+    
+    .caption {
+      float: left;
+      width: 40%;
+      margin-left: 50px;
+      margin-top: 100px;
+    }
+    
+    .caption h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: darkgreen;
+    }
+    
+    .caption p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: darkgreen;
+    }
+    
+    .caption button {
+      font-size: 15px;
+      padding: 7px 15px 7px 15px;
+      background-color: darkgreen;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .signin {
+      float: right;
+     width: 40%;
+      margin-right: 50px;
+      margin-top: 100px;
+      display: none;
+      color: darkgreen;
+      border: solid ;
+      padding-left: 30px;
+      padding-bottom: 20px;
+
+    
+    }
+    
+    .signin h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    
+    .signin input[type="text"],
+    .signin input[type="password"],
+    .signin input[type="submit"] {
+      width: 60%;
+      padding: 10px;
+      border: solid darkgreen 2px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    
+    .signin input[type="submit"] {
+      background-color:  darkgreen;
+      width: 64%;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    
+    .switch {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .switch a {
+      color: #333;
+    }
+  </style>
+  <script>
+    
+    function toggleSections() {
+      var signupSection = document.getElementById('signup-section');
+      var signinSection = document.getElementById('signin-section');
+      
+      if (signupSection.style.display === 'block') {
+        signupSection.style.display = 'none';
+        signinSection.style.display = 'block';
+      } else {
+        signupSection.style.display = 'block';
+        signinSection.style.display = 'none';
+      }
+    }
+  </script>
+</head>
+<body>
+ 
+
+<header>
+    <div class="logo">CarbonCatalyst</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="about1.html">About Us</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faqs.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  </section>
+  
+  <div class="caption">
+    <h1>Empower your steps, shrink your carbon footprint</h1>
+    <p>Welcome to CarbonCatalyst, your personalized journey towards a sustainable lifestyle. Measure, manage, and minimize 
+        your carbon footprint effortlessly. From eco-friendly choices to impactful habits, every action you take contributes
+         to a healthier planet. Join us in making every step count for a brighter, greener future!</p>
+    <button class="j">Join Us</button>
+  </div>
+  
+  <div id="signup-section" class="signin">
+    <h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sign Up</h2>
+    <form method = "POST" action= "signup_proc.php" enctype="multipart/form-data" autocomplete="off">
+      <input type="text" id="name" name="name" placeholder="&#128100;  Name" required>
+      <input type="text" id="email" name= "email" placeholder="&#9993;  Email" required>
+      <input type="password" id ="password" name= "password"  placeholder="&#128065;  Password" required>
+    
+      <p style="font-size: 12px; color: black;">Upload Profile Picture &nbsp;&nbsp;<input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" placeholder="Choose Photo" required><br><br>
+      </p>
+        <input type="submit" value="&#10004;  Create Account">
+    </form>
+    <br>
+    <div class="switch">
+        Already a user ?  <a href="#" onclick="toggleSections()">Sign In</a>
+    </div>
+  </div>
+  
+  <div id="signin-section" class="signin">
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sign In</h2>
+    <form method="POST" action = "login.php">
+      <input type= "text" id="email" name= "email" placeholder="&#9993;  Email" required>
+      <input type="password" id ="password" name= "password"  placeholder="&#128065;  Password" required>
+      <input type="submit" value="&#10004;  Sign In">
+    </form>
+    <div class="switch">
+      <a href="#" onclick="toggleSections()">Sign Up</a>
+    </div>
+  </div>
+  
+  <script>
+    
+    document.getElementById('signup-section').style.display = 'block';
+  </script>
+  
+</body>
+</html>

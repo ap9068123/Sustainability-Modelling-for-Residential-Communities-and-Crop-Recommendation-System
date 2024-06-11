@@ -1,0 +1,37 @@
+<!-- Your HTML file -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Example</title>
+</head>
+<body>
+    <!-- Your webpage content here -->
+
+    <script>
+        // Example: Displaying a notification on the client-side
+        function showNotification(message) {
+            // Use the Notification API if supported
+            if (Notification && Notification.permission === "granted") {
+                new Notification(message);
+            } else if (Notification && Notification.permission !== "denied") {
+                Notification.requestPermission().then(function(permission) {
+                    if (permission === "granted") {
+                        new Notification(message);
+                    }
+                });
+            } else {
+                // Fallback for browsers that do not support the Notification API
+                alert(message);
+            }
+        }
+
+        // Example: Triggering the client-side notification
+        // You might call this function in response to a user action or another event
+        console.log("Function called");
+
+        showNotification("Event occurred!");
+    </script>
+</body>
+</html>

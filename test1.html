@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .notification-button {
+  position: relative; /* Position relative to make ::after absolute positioning relative to this */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.notification-button::after {
+  content: "1"; /* Text content for the notification */
+  position: absolute; /* Position the notification */
+  top: 0; /* Adjust top position */
+  right: 0; /* Adjust right position */
+  background-color: red; /* Notification background color */
+  color: white; /* Notification text color */
+  width: 20px; /* Width of the notification */
+  height: 20px; /* Height of the notification */
+  border-radius: 50%; /* Make it a circle */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  font-size: 12px; /* Font size of the notification text */
+}
+
+    </style>
+</head>
+<body>
+    <button class="notification-button">Button</button>
+
+</body>
+</html>

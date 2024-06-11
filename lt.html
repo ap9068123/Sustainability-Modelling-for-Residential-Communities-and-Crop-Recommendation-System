@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSM Route Finder</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+</head>
+<body>
+    <div id="map" style="height: 400px;"></div>
+    <div>
+        <label for="start">Enter Start Location:</label>
+        <input type="text" id="start" placeholder="Type start location...">
+        <label for="destination">Enter Destination:</label>
+        <input type="text" id="destination" placeholder="Type destination...">
+        <button onclick="findBestRoute()">Find Route</button>
+    </div>
+
+    <script>
+        var map = L.map('map').setView([0, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        var control = L.Routing.control({
+            waypoints: [
+                L.latLng(0, 0),
+                L.latLng(0, 0)
+            ],
+            routeWhileDragging: true
+        }).addTo(map);
+
+        function findBestRoute() {
+            var startInput = document.getElementById('start');
+            var destinationInput = document.getElementById('destination');
+
+            var start = startInput.value.trim();
+            var destination = destinationInput.value.trim();
+
+            if (start !== "" && destination !== "") {
+                control.setWaypoints([
+                    L.latLng(0, 0),
+                    L.latLng(0, 0)
+                ]);
+
+                control.spliceWaypoints(0, 1, start);
+                control.spliceWaypoints(control.getWaypoints().length - 1, 1, destination);
+            } else {
+                alert('Please enter both start and destination locations.');
+            }
+        }
+    </script>
+</body>
+</html>

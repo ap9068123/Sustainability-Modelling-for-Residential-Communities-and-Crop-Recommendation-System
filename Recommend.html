@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>    
+        <title>Recommendation Page</title>
+        
+         
+         <style>
+         
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+           
+        }
+             
+h1{
+    font-size: 30px;
+    text-align: center;
+    background-color:darkgreen;
+    color:white;
+     padding:10px 10px 10px 10px;
+}
+h2{
+    font-size: 20px;
+    color: blue;
+}
+.g{
+    background-color: white;
+    text-align: center;
+   
+    border: 2px solid green;
+    border-radius: 6px;
+    height: 100%;
+    width: 60%;
+    padding: 20px 20px 20px 20px;
+    font-size: 20px;
+}
+
+input[type="number"]{
+    border: 2px solid green;
+    border-radius: 4px;
+    width:30%;
+    height:20%;
+    padding:10px 10px 10px 10px;
+}
+input[type="button"],input[type="submit"],input[type="reset"]{
+    background-color: darkgreen;
+    color: white;
+    border:solid darkgreen 2px;
+    border-radius: 4px;
+     padding:10px 10px 10px 10px;
+   
+    width: 18%;
+}
+         </style>
+        
+        
+ 
+      
+    </head>
+    <body>    
+      
+        
+        <center>
+          
+            <form>
+                <br><br>
+                <div class="g">
+                <h1>Personalised Recommendations</h1>
+                <input type="number" id="electricity" placeholder="Enter the monthly Electricity Bill Amount" required min="0"><br><br>
+                <input type="number" id="gas" placeholder="Enter the monthly Gas Bill Amount" required min="0"><br><br>
+                <input type="number" id="oil" placeholder="Enter the monthly Oil Bill Amount" min="0"><br><br>
+                <input type="number" id="mileage" placeholder="If you have a vehicle, enter its total yearly mileage" min="0"><br><br>
+                <input type="number" id="air1" placeholder="How many times have you travelled by air last year(4 hours or less)?" min="0"><br><br>
+                <input type="number" id="air2" placeholder="How many times have you travelled by air last year(more than 4 hours)?" min="0"><br><br>
+                Do you recycle newspapers?
+                <input type="radio" id="yes_newspaper" name="newspaper" value="yes_newspaper" checked><label for="yes_newspaper">Yes</label>
+                <input type="radio" id="no_newspaper" name="newspaper" value="no_newspaper"><label for="no_newspaper">No</label><br><br>
+                Do you recycle Aluminium and Tin?
+                <input type="radio" id="yes_tin" name="tin" value="yes_tin" checked><label for="yes_tin">Yes</label>
+                <input type="radio" id="no_tin" name="tin" value="no_tin"><label for="no_tin">No</label><br><br>
+                <input type="button" value="Check Recommendation" onclick="calculate()">
+                <input type="button" value="Check Again" onclick="window.location.reload()"><br>
+                <p id="para"></p>
+                <p id="recommend"></p>
+                <a href="Measures.html">Suggested Carbon Footprint Reduction Measures</a>
+                
+            </div>
+            </form>  
+            
+     </center>
+        
+         <script>
+            function calculate(){
+                var electricity=document.getElementById("electricity").value;
+                var gas=document.getElementById("gas").value;
+                var oil=document.getElementById("oil").value;
+                var mileage=document.getElementById("mileage").value;
+                var air1=document.getElementById("air1").value;
+                var air2=document.getElementById("air2").value;
+                var newspaper=document.getElementById("yes_newspaper").checked;
+                var tin=document.getElementById("yes_tin").checked;
+                var cf=0;
+                electricity=(electricity>0)?electricity*105:0;
+                cf=electricity;
+                gas=(gas>0)?gas*105:0;
+                cf+=gas;
+                oil=(oil>0)?oil*113:0;
+                cf+=oil;
+                mileage=(mileage>0)?mileage*0.79:0;
+                cf+=mileage;
+                air1=(air1>0)?air1*1100:0;
+                cf+=air1;
+                air2=(air2>0)?air1*4400:0;                
+                cf+=air2;
+                if(newspaper==false)
+                    cf+=184;
+                if(tin==false)
+                    cf+=166;
+                var car="Your Carbon Footprint is ";
+                if(cf<=6000)
+                    car+="very low";
+                else if(cf<16000)
+                    car+="ideal. VERY GOOD !!!";
+                else if(cf<22000)
+                    car+="average";
+                else{
+                    car+="VERY HIGH !!!";
+                    var max=Math.max(electricity,gas,oil,mileage,air1,air2,184,166);
+                    var recommend="";
+                    if(max==electricity)
+                        recommend="Try reducing the monthly electricity bill";
+                    else if(max==gas)
+                        recommend="Try reducing the monthly gas bill";
+                    else if(max==oil)
+                        recommend="Try reducing the monthly oil bill";
+                    else if(max==mileage)
+                        recommend="Use a vehicle with better mileage";
+                    else if(max==air1 || max==air2)
+                        recommend="Try reducing travelling by air";                                        
+                    else
+                        recommend="Try Recycling more newspapers, aluminium an tin";
+                    document.getElementById("recommend").innerHTML=recommend;
+                }                    
+                document.getElementById("para").innerHTML=car;
+            }
+        </script>
+    </body>
+</html>
